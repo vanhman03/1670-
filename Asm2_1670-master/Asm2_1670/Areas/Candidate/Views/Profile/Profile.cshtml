@@ -1,0 +1,150 @@
+﻿@using Asm2_1670.Models.ViewModels;
+@model ResumeVM
+<body>
+<div class="theme-layout" id="scrollup">
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="skills-btn">
+											<a href="#" title="">Photoshop</a>
+											<a href="#" title="">Designers</a>
+											<a href="#" title="">Illustrator</a>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="action-inner">
+											@if(User.IsInRole("Employer"))
+											{
+												<a asp-area="Employer" asp-controller="Application" asp-action="Rejected" asp-route-id="@ViewBag.JobId" asp-route-data="@Model.User.Id"><i class="la la-paper-plane"></i>Rejected</a>
+												<a asp-area="Employer" asp-controller="Application" asp-action="Approved" asp-route-id="@ViewBag.JobId" asp-route-data="@Model.User.Id"><i class="la la-paper-plane"></i>Approved</a>
+											}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="overlape">
+		<div class="block remove-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="cand-single-user">
+							<div class="share-bar circle">
+								 <a href="#" title="" class="share-google"><i class="la la-google"></i></a><a href="#" title="" class="share-fb"><i class="fa fa-facebook"></i></a><a href="#" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
+							 </div>
+							 <div class="can-detail-s">
+								 <div class="cst"><img src="@Model.User.ImageUrl" alt=""></div>
+								 <h3>@Model.User.Name</h3>
+								 <span><i>@Model.User.JobTitle</i></span>
+								 <p>@Model.User.Email</p>
+								 <p>Member Since, 2024</p>
+								 <p><i class="la la-map-marker"></i>@Model.User.City / @Model.User.Country</p>
+							 </div>
+							 <div class="download-cv">
+								 <a href="#" title="">Download CV <i class="la la-download"></i></a>
+							 </div>
+						 </div>
+						 <ul class="cand-extralink">
+							 <li><a href="#about" title="">About</a></li>
+							 <li><a href="#education" title="">Education</a></li>
+							 <li><a href="#experience" title="">Work Experience</a></li>
+							 <li><a href="#awards" title="">Awards</a></li>
+						 </ul>
+						 <div class="cand-details-sec">
+							 <div class="row">
+								 <div class="col-lg-8 column">
+									 <div class="cand-details" id="about">
+										 <h2>Candidates About</h2>
+										 <p>Hello my name is @Model.User.Name and I’m a @Model.User.JobTitle from @Model.User.City, @Model.User.Country. In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. </p>
+										 <p>Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.</p>
+										 <div class="edu-history-sec" id="education">
+											 <h2>Education</h2>
+											 @foreach(var e in Model.ListEducation)
+											 {
+												<div class="edu-history">
+													 <i class="la la-graduation-cap"></i>
+													 <div class="edu-hisinfo">
+														 <h3>@e.Title</h3>
+														 <i>@e.StartTime - @e.EndTime</i>
+														 <span>@e.University <i>@e.Major</i></span>
+														 <p>@e.Description</p>
+													 </div>
+												</div>
+											 }
+										 </div>
+										 <div class="edu-history-sec" id="experience">
+											 <h2>Work &amp; Experience</h2>
+											 @foreach(var w in Model.ListWorkExp)
+											 {
+												 <div class="edu-history style2">
+													 <i></i>
+													 <div class="edu-hisinfo">
+														 <h3>@w.Title <span>@w.Company</span></h3>
+														 <i>@w.StartTime - @w.EndTime</i>
+														 <p>@w.Description</p>
+													 </div>
+												</div>
+											 }
+										 </div>
+										 <div class="edu-history-sec" id="awards">
+											 <h2>Awards</h2>
+											 @foreach(var a in Model.ListAward)
+											 {
+											 <div class="edu-history style2">
+												 <i></i>
+												 <div class="edu-hisinfo">
+													 <h3>@a.Title</h3>
+													 <i>@a.StartTime - @a.EndTime</i>
+													 <p>@a.Description</p>
+												 </div>
+											 </div>
+											 }
+										 </div>
+									 </div>
+								 </div>
+								 <div class="col-lg-4 column">
+									 <div class="job-overview">
+										 <h3>Job Overview</h3>
+										 <ul>
+											 <li><i class="la la-money"></i><h3>Offerd Salary</h3><span>@Model.User.SalaryOffer</span></li>
+											 <li><i class="la la-mars-double"></i><h3>Gender</h3><span>@Model.User.Gender</span></li>
+											 <li><i class="la la-thumb-tack"></i><h3>Career Level</h3><span>@Model.User.CareerLevel</span></li>
+											 <li><i class="la la-shield"></i><h3>Experience</h3><span>@Model.User.Expecrience Years</span></li>
+											 <li><i class="la la-line-chart "></i><h3>Qualification</h3><span>@Model.User.Qualification</span></li>
+										 </ul>
+									 </div><!-- Job Overview -->
+									 <div class="quick-form-job">
+										 <h3>Contact</h3>
+										 <form method="post" asp-area="User" asp-controller="Email" asp-action="SendEmail">
+											 <input id="name" name="name" type="text" value="@ViewBag.Name">
+											 <input id="from" name="from" type="text" value="@ViewBag.Email">
+											 <input id="to" name="to" value="@Model.User.Email" />
+											 <input id="phone" name="phone" type="text" value="@ViewBag.Phone">
+											 <textarea id="content" name="content" placeholder="Message should have more than 50 characters"></textarea>
+											 <button class="submit">Send Email</button>
+											 <span>You accepts our <a href="#" title="">Terms and Conditions</a></span>
+										 </form>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+</body>

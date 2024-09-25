@@ -1,0 +1,89 @@
+﻿@model Categories
+<body>
+<div class="theme-layout" id="scrollup">
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Welcome Admin</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container">
+				 <div class="row no-gape">
+					 <div class="col-lg-9 column">
+						 <div class="padding-left">
+							 <div class="profile-title">
+								 <h3>Edit category</h3>
+							 </div>
+							 <div class="profile-form-edit">
+								 <form method="post">
+									 <div class="row">
+										 <div class="col-lg-12">
+											 <span asp-for="Name" class="pf-title">Name</span>
+											 <div class="pf-field">
+												 <input disabled asp-for="Name" type="text">
+												 <span asp-validation-for="Name" class="text-danger"></span>
+											 </div>
+										 </div>
+										<div class="col-lg-12">
+											 <span asp-for="Icon" class="pf-title">Icon</span>
+											 <div class="pf-field">
+												 <input disabled asp-for="Icon" type="text">
+												 <span asp-validation-for="Icon" class="text-danger"></span>
+											 </div>
+										 </div>
+										 <div class="col-lg-12">
+											 <span asp-for="Proposer" class="pf-title">Proposer</span>
+											 <div class="pf-field">
+												 <input disabled asp-for="Proposer" type="text">
+												 <span asp-validation-for="Proposer" class="text-danger"></span>
+											 </div>
+										 </div>
+
+										 <div class="col-lg-12">
+											 <span asp-for="Status" class="pf-title">Status</span>
+											 <div style="padding-bottom: 60px" class="pf-field">
+												 <select disabled asp-for="Status" data-placeholder="Please Select Specialism" class="chosen">
+													<option value="Active">Active</option>
+													<option value="Inactive">Inactive</option>
+													<option value="Denined">Denined</option>
+												</select>
+											 </div>
+										 </div>
+										 <div class="col-lg-12">
+											 <button type="submit" class="btn btn-primary">Delete</button>
+											 <a asp-controller="Categories" asp-action="Index" class="btn btn-primary">Back to List</a>
+										 </div>
+
+									 </div>
+								 </form>
+							 </div>
+						 </div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+	</div>
+
+<!-- Include Date Range Picker -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+<script src="~/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script>
+		$(function(){
+			$('.datepicker').datepicker({
+				format: 'mm-dd-yyyy'
+			});
+		});
+</script>
+</body>

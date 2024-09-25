@@ -1,0 +1,77 @@
+﻿@model Portfolio
+<div class="theme-layout" id="scrollup">
+<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Welcome @ViewBag.Name</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+<section>
+		<div class="block remove-top">
+			<div class="container">
+				 <div class="row no-gape">
+					 <aside class="col-lg-3 column border-right">
+						 <div class="widget">
+							 <div class="tree_widget-sec">
+								 <ul>
+									 <li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
+									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+									<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
+									<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
+									<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
+									<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv &amp; Cover Letter</a></li>
+									<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+									<li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+								 </ul>
+							 </div>
+						 </div>
+					 </aside>
+					 <div class="col-lg-9 column">
+						 <div class="padding-left">
+							 <div class="manage-jobs-sec">
+								 <div class="border-title"><h3>Portfolio</h3><a class="cancel" href="#" title=""><i class="la la-close"></i> Cancel</a></div>
+								 <form method="post" enctype="multipart/form-data">
+									 <div class="resumeadd-form">
+										 <div class="row">
+											 <input hidden asp-for="UserId" value="@ViewBag.UserId" />
+											 <div class="col-lg-12">
+												 <p>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg &amp; .png</p>
+											 </div>
+											 <div class="col-lg-12">
+												 <div class="upload-portfolio">
+													 <div class="uploadbox">
+														 <label for="file-upload" class="custom-file-upload">
+															<i class="la la-cloud-upload"></i> <span>Upload Image</span>
+														</label>
+														<input asp-for="ImageUrl" id="file-upload" type="file">
+													 </div>
+													 <div class="uploadfield">
+														 <span class="pf-title">Title</span>
+														 <div class="pf-field">
+															 <input asp-for="Title" placeholder="Tooms.." type="text">
+														 </div>
+													 </div>
+													 <div class="uploadbutton">
+														 <button type="submit">Save</button>
+													 </div>
+												 </div>
+											 </div>
+										 </div>
+									 </div>
+								 </form>
+							 </div>
+						 </div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+</div>

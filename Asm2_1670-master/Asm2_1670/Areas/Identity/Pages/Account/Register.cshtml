@@ -1,0 +1,95 @@
+﻿@page
+@model RegisterModel
+<body>
+<div class="theme-layout" id="scrollup">
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Register</h3>
+								<span>Keep up to date with the latest news</span>
+							</div>
+							<div class="page-breacrumbs">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signup-popup-box static">
+							<div class="account-popup">
+								<h3>Sign Up</h3>
+								<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+									<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+										@if (User.IsInRole("Admin"))
+										{
+												<input hidden asp-for="Input.Role" value="Employer"/>
+										}
+										else
+										{
+											<input hidden asp-for="Input.Role" value="Candidate"/>
+										}
+									<div class="cfield">
+										<input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" placeholder="Full name" />
+										<i class="la la-user"></i>
+										<span asp-validation-for="Input.Email" class="text-danger"></span>
+									</div>
+									<div class="cfield">
+										<input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+										<i class="la la-envelope-o"></i>
+										<span asp-validation-for="Input.Email" class="text-danger"></span>
+									</div>
+									<div class="cfield">
+										<input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+										<i class="la la-key"></i>
+										<span asp-validation-for="Input.Password" class="text-danger"></span>
+									</div>
+									<div class="cfield">
+										<input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+										<i class="la la-key"></i>
+										<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+									</div>
+									<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+								</form>
+								<div class="extra-login">
+									<span>Or</span>
+									<div class="login-social">
+										<a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+										<a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+							</div>
+						</div><!-- SIGNUP POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
+</body>
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

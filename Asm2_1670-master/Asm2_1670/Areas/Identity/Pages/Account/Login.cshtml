@@ -1,0 +1,87 @@
+﻿@page
+@model LoginModel
+<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Login</h3>
+								<span>Keep up to date with the latest news</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signin-popup-box static">
+							<div class="account-popup">
+								<form id="account" method="post">
+								<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+									<div class="cfield">
+										<input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com">
+										<i class="la la-user"></i>
+										<span asp-validation-for="Input.Email" class="text-danger"></span>
+									</div>
+									<div class="cfield">
+										<input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password">
+										<i class="la la-key"></i>
+										<span asp-validation-for="Input.Password" class="text-danger"></span>
+									</div>
+									<div class="checkbox mb-3">
+										<label asp-for="Input.RememberMe" class="form-label">
+										<input class="form-check-input" asp-for="Input.RememberMe" />
+												@Html.DisplayNameFor(m => m.Input.RememberMe)
+										</label>
+									</div>
+									<button id="login-submit" type="submit">Login</button>
+									<div>
+										<p>
+											<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+										</p>
+										<p>
+											<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+										</p>
+										<p>
+											<a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+										</p>
+									</div>
+								</form>
+								<div class="extra-login">
+									<span>Or</span>
+									<div class="login-social">
+										<a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+										<a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+							</div>
+						</div><!-- LOGIN POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

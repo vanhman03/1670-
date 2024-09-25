@@ -1,0 +1,96 @@
+﻿@model List<Application>
+<body>
+<div class="theme-layout" id="scrollup">
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Welcome Tera Planer</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container">
+				 <div class="row no-gape">
+					 <aside class="col-lg-3 column border-right">
+						 <div class="widget">
+							 <div class="tree_widget-sec">
+								 <ul>
+									 <li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
+									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+									<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
+									<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
+									<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
+									<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv &amp; Cover Letter</a></li>
+									<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+									<li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+								 </ul>
+							 </div>
+						 </div>
+					 </aside>
+					 <div class="col-lg-9 column">
+						 <div class="padding-left">
+							 <div class="manage-jobs-sec">
+								 <h3>Manage Jobs</h3>
+								 <table>
+									 <thead>
+										 <tr>
+											 <td>Job Title</td>
+											 <td>Company</td>
+											 <td>Date</td>
+											 <td>Status</td>
+											 <td></td>
+										 </tr>
+									 </thead>
+									 <tbody>
+										 @if(Model.Count == 0){
+											 <tr>
+												 <td>You haven't applied to any jobs yet!</td>
+											 </tr>
+										 }
+										 @foreach(var apply in Model)
+										 {
+											<tr>
+												 <td>
+													 <div class="table-list-title">
+														 <i><a asp-area="User" asp-controller="Job" asp-action="Jobdetail" asp-route-id="@apply.Job.Id">@apply.Job.JobTitle</a></i><br>
+														 <span><i class="la la-map-marker"></i>@apply.Job.City, @apply.Job.Country</span>
+													 </div>
+												 </td>
+												 <td>
+													 <div class="table-list-title">
+														 <h3><a href="#" title="">@apply.Job.Name</a></h3>
+													 </div>
+												 </td>
+												 <td>
+													 <span>@apply.AppliedTime</span>
+												 </td>
+													 <td>
+														 <span>@apply.Status</span>
+													 </td>
+												 <td>
+													 <ul class="action_job">
+														 <li><span>Delete</span><a asp-controller="Apply" asp-action="Delete" asp-route-id="@apply.Id"><i class="la la-trash-o"></i></a></li>
+													 </ul>
+												 </td>
+											</tr>
+										 }
+									 </tbody>
+								 </table>
+							 </div>
+						 </div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+</div>
+</body>
